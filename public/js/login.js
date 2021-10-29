@@ -1,5 +1,3 @@
-
-//TODO: collect data from login form, make post request to log in user.
 async function loginUser(event) {
     event.preventDefault();
     const username = document.querySelector("#username").value
@@ -15,7 +13,6 @@ async function loginUser(event) {
             "Content-Type":"application/json"
         }
     })
-    //TODO: once you get an ok response, redirect to the profile page
     if (response.ok){
         document.location.replace("/profile")
     } else{
