@@ -19,10 +19,9 @@ router.get("/",(req,res)=>{
 })
 
 router.post("/",(req,res)=>{
-    const encryptedPassword = bcrypt.hashSync(req.body.password,3);
     User.create({
         username:req.body.username,
-        password:encryptedPassword,
+        password:req.body.password,
     }).then(newUser=>{
         res.json(newUser);
     }).catch(err=>{
@@ -37,15 +36,18 @@ router.post("/login",(req,res)=>{
             username:req.body.username
         }
     }).then(foundUser=>{
+        console.log(foundUser)
         if(!foundUser){
             res.status(401).json({message:"incorrect username or password"})
         } else {
+            console.log("looks like we made it")
+            console.log(req.body)
             if(bcrypt.compareSync(req.body.password,foundUser.password)){
                 req.session.user = {
                     username:foundUser.username,
                     id:foundUser.id
                 }
-                res.json(foundUser)
+                res.json(foundUser) 
             } else {
                 res.status(401).json({message:"incorrect username or password"})
             }
