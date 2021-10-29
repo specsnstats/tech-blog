@@ -11,13 +11,12 @@ const PORT = process.env.PORT || 3000;
 const hbs = exphbs.create({});
 
 // Requiring our models for syncing
-const {User,Pet,Group} = require('./models');
+const {User,Post} = require('./models');
 const routes = require("./controllers");
 
 app.engine('handlebars', hbs.engine);
 app.set('view engine', 'handlebars');
 app.use(express.static("public"));
-
 
 // Sets up the Express app to handle data parsing
 
@@ -33,10 +32,8 @@ app.use(session({
      })
   }))
 
-
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
-
 
 app.use(routes)
 

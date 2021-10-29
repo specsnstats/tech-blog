@@ -1,5 +1,5 @@
 const {Model, DataTypes} = require("sequelize")
-const sequelize = require('../config/connection');
+const sequelize = require('../config/connection.js');
 const bcrypt = require("bcrypt");
 
 class User extends Model {}
@@ -23,7 +23,7 @@ User.init({
     hooks:{
         beforeCreate(newUser){
             newUser.username = newUser.username.toLowerCase();
-            newUser.password = bcrypt.hashSync(newUser.password,5);
+            newUser.password = bcrypt.hashSync(newUser.password,3);
             return newUser;
         },
         beforeUpdate(updatedUser){
@@ -33,6 +33,7 @@ User.init({
         }
     },
     sequelize,
+    
 });
 
 module.exports=User
