@@ -3,20 +3,20 @@ const router = express.Router();
 const {Post,User} = require('../models');
 
 router.get("/",(req,res)=>{
-    Pet.findAll({
+    Post.findAll({
         order:["UserId"],
         include:[User]
-    }).then(petData=>{
+    }).then(postData=>{
 
-        const hbsPets = petData.map(pet=>pet.get({plain:true}))
-        // res.json(hbsPets)
+        const hbsPets = postData.map(post=>post.get({plain:true}))
+        // res.json(hbsPost)
         res.render("home",{
-            pets:hbsPets
+            post:hbsPost
         })
     })
 })
 
-router.get("/profile",(req,res)=>{
+router.get("/dashboard",(req,res)=>{
     if(!req.session.user){
         return res.status(401).send("login first!")
     }
