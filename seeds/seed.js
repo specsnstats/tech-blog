@@ -30,27 +30,27 @@ const seed = async()=>{
         },
         {
             title: "Tuesday's Quote",
-            text: "Ciggarettes are 50 percent ignorance, and 50 percent punishment",
+            text: "if we cant repair life and death, what is there left to repair?",
             UserId:2
         },
         {
             title: "Wednesday's Quote",
-            text: "Ciggarettes are 50 percent ignorance, and 50 percent punishment",
+            text: "to a lot of people outer space is synonymous with sperm bank",
             UserId:2
         },
         {
             title: "Thursday's Quote",
-            text: "Ciggarettes are 50 percent ignorance, and 50 percent punishment",
+            text: "keep eating. work. accept whatever comes. screw your boss. glamorize stupidity.",
             UserId:3
         },
         {
             title: "Friday's Quote",
-            text: "Ciggarettes are 50 percent ignorance, and 50 percent punishment",
+            text: "stop learning. start living",
             UserId:3
         },
         {
             title: "Saturday's Quote",
-            text: "Ciggarettes are 50 percent ignorance, and 50 percent punishment",
+            text: "theres a clear link between compassion and stupidity",
             UserId:4
         },
     ])
