@@ -3,17 +3,9 @@ const router = express.Router();
 const {Post,User} = require('../models');
 
 router.get("/",(req,res)=>{
-    Post.findAll({
-        order:["UserId"],
-        include:[User]
-    }).then(postData=>{
-
-        const hbsPets = postData.map(post=>post.get({plain:true}))
         // res.json(hbsPost)
         res.render("home",{
-            post:hbsPost
         })
-    })
 })
 
 router.get("/dashboard",(req,res)=>{

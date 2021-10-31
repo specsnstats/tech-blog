@@ -44,7 +44,8 @@ router.post("/login",(req,res)=>{
                     username:foundUser.username,
                     id:foundUser.id
                 }
-                res.json(foundUser) 
+                res.json(foundUser)
+                console.log("Login Successful!")
             } else {
                 res.status(401).json({message:"incorrect username or password"})
             }
