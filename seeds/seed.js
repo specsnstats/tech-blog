@@ -55,3 +55,4 @@ const seed = async()=>{
         },
     ])
 }
+seed()
