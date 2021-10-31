@@ -18,19 +18,20 @@ router.get("/",(req,res)=>{
     })
 })
 
-router.post("/", async (req,res)=>{
-    try {
-        const userData = await User.create(req.body);
-    
-        req.session.save(() => {
-          req.session.username = userData.username;
-          req.session.password = userData.password;
-    
-          res.status(200).json(userData);
-        });
-      } catch (err) {
-        res.status(400).json(err);
-      }
+router.post("/",(req,res)=>{
+    User.create({
+        username:req.body.username,
+        password:req.body.password,
+    }).then(newUser=>{
+        res.json(newUser);
+        req.session.save(()=>{
+            req.session.username= username,
+            req.session.password= password
+        })
+    }).catch(err=>{
+        console.log(err);
+        res.status(500).json({message:"an error occured",err:err})
+    })
 })
 
 router.post("/login",(req,res)=>{
