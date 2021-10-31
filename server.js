@@ -21,16 +21,15 @@ app.set('view engine', 'handlebars');
 // Sets up the Express app to handle data parsing
 
 app.use(session({
-    secret: process.env.SESSION_SECRET,
+    secret: process.env.SECRET,
     resave: false,
     saveUninitialized: true,
-    cookie: { 
-        maxAge: 1000 * 60 * 60 * 2
-     },
+    cookie: {},
      store: new SequelizeStore({
         db:sequelize
      })
   }))
+
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
