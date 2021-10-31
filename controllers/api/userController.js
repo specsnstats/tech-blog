@@ -18,16 +18,19 @@ router.get("/",(req,res)=>{
     })
 })
 
-router.post("/",(req,res)=>{
-    User.create({
-        username:req.body.username,
-        password:req.body.password,
-    }).then(newUser=>{
-        res.json(newUser);
-    }).catch(err=>{
-        console.log(err);
-        res.status(500).json({message:"an error occured",err:err})
-    })
+router.post("/", async (req,res)=>{
+    try {
+        const userData = await User.create(req.body);
+    
+        req.session.save(() => {
+          req.session.username = userData.username;
+          req.session.password = userData.password;
+    
+          res.status(200).json(userData);
+        });
+      } catch (err) {
+        res.status(400).json(err);
+      }
 })
 
 router.post("/login",(req,res)=>{
@@ -65,5 +68,15 @@ router.delete("/:id",(req,res)=>{
         res.json(delUser)
     })
 })
+
+router.post('/logout', (req, res) => {
+    if (req.session.user) {
+      req.session.destroy(() => {
+        res.status(204).end();
+      });
+    } else {
+      res.status(404).end();
+    }
+  });
 
 module.exports = router;

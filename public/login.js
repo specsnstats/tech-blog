@@ -27,8 +27,10 @@ loginForm.addEventListener('submit', async (event) => {
 
 signupForm.addEventListener("submit", async (event)=>{
     event.preventDefault()
-    const signupUsername = document.getElementById("signup-Username").value
-    const signupPassword = document.getElementById("signup-Password").value
+    const signupUsername = document.getElementById("signup-username").value
+    const signupPassword = document.getElementById("signup-password").value
+    console.log(signupPassword)
+    console.log(signupUsername)
 
     if(signupUsername && signupPassword){
         const response = await fetch("/api/users", {
