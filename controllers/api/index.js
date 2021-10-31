@@ -5,6 +5,6 @@ const userRoutes = require("./userController");
 router.use("/users",userRoutes);
 
 const postRoutes = require("./postController");
-router.use("/post",postRoutes);
+router.use("/posts",postRoutes);
 
 module.exports = router;

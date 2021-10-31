@@ -24,13 +24,13 @@ router.post("/", (req, res) => {
   if(!req.session.user){
     res.status(401).json({message:"Please login to post!"})
   } else {
-    Pet.create({
+    Post.create({
       title: req.body.title,
       text: req.body.text,
       UserId: req.session.user.id
     })
-    .then(newPet => {
-      res.json(newPet);
+    .then(newPost => {
+      res.json(newPost);
     })
     .catch(err => {
       console.log(err);

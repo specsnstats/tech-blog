@@ -5,11 +5,7 @@ class Post extends Model {}
 
 Post.init({
     title: {
-         type: DataTypes.STRING,
-         unique:true,
-         validate:{
-            isAlphanumeric:true
-         }
+         type: DataTypes.TEXT,
     },
     text:{
         type: DataTypes.TEXT,

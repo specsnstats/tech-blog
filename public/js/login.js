@@ -1,7 +1,9 @@
 async function loginUser(event) {
     event.preventDefault();
-    const username = document.querySelector("#username").value
-    const password = document.querySelector("#password").value
+    const username = document.querySelector("#login-username").value
+    const password = document.querySelector("#login-password").value
+    console.log("submitted username is " + username)
+    console.log("submitted password is " + password)
 
     const response = await fetch(`api/users/login`, {
         method:"POST",
@@ -14,10 +16,10 @@ async function loginUser(event) {
         }
     })
     if (response.ok){
-        document.location.replace("/profile")
+        document.location.replace("/dashboard")
     } else{
         alert("Failed to Login")
     }
 }
 
-document.querySelector("#login-form").addEventListener("submit", loginUser)
+document.querySelector("#login").addEventListener("submit", loginUser)

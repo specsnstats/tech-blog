@@ -28,8 +28,12 @@ router.get("/dashboard",(req,res)=>{
     })
 })
 
-router.get("/login",(req,res)=>{
-    res.render("login")
+router.get('/login', (req, res) => {
+    console.log(req.session.user)
+    if(req.session.user){
+        res.redirect('/dashboard')
+    }
+    res.render('login')
 })
 
 module.exports = router;
