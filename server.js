@@ -16,7 +16,7 @@ const routes = require("./controllers");
 
 app.engine('handlebars', hbs.engine);
 app.set('view engine', 'handlebars');
-app.use(express.static("public"));
+app.use(express.static("/public"));
 
 // Sets up the Express app to handle data parsing
 
